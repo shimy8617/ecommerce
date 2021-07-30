@@ -28,7 +28,7 @@
 					VALUES ('$nombre','$descripcion',$precio,$estado,'$nombre_imagen')";
 					$result=mysqli_query($con,$sql);
 						if($result) {
-							if (move_uploaded_file($_FILES['imagen']['tmp_name'],"../assets/img/".$nombre_imagen)) {
+							if (move_uploaded_file($_FILES['imagen']['tmp_name'],"../../aypooecommerce/assets/products/".$nombre_imagen)) {
 								$response->state=true;
 							}else{
 								$response->state=false;
