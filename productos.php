@@ -38,7 +38,7 @@
 				</select>
 			</div>
 			<div class="div-flex">
-				<input type="file" name="imagen">
+				<input type="file" id="imagen">
 			</div>
 			<button onclick="save_product()">Guardar</button>
 		</div>
@@ -98,20 +98,29 @@
 			document.getElementById(id).style.display="none";
 		}
 		function save_product(){
-			let fd = new FormData();
-			fd.append('codpro', document.getElementById('codigo').value);
-			fd.append('nombre', document.getElementById('nombre').value);
-			fd.append('descripcion', document.getElementById('descripcion').value);
-			fd.append('precio', document.getElementById('precio').value);
-			fd.append('estado', document.getElementById('estado').value);
-			fd.append('imagen', document.getElementById('imagen').files[0]);
+			let fd=new FormData();
+			fd.append('codigo',document.getElementById('codigo').value);
+			fd.append('nombre',document.getElementById('nombre').value);
+			fd.append('descripcion',document.getElementById('descripcion').value);
+			fd.append('precio',document.getElementById('precio').value);
+			fd.append('estado',document.getElementById('estado').value);
+			fd.append('imagen',document.getElementById('imagen').files[0]);
 			let request=new XMLHttpRequest();
-			request.open('POST','api/producto_save.php',true);
+			request.open('POST','api/product_save.php',true);
 			request.onload=function(){
-				console.log(request);
+				if(request.readyState==4 && request.status==200) {
+					let response=JSON.parse(request.responseText);
+					console.log(response);
+					if(response.state){
+						alert("correcto");
+					}else{
+						alert(response.detail);
+					}
+				}
 			}
 			request.send(fd);
 		}
 	</script>
 </body>
 </html>
+
