@@ -44,15 +44,7 @@
 		</div>
 	</div>
 	<div class="main-container">
-		<div class="body-nav-bar">
-			<div class="logo-img"><img src="assets/web/aypoo.jpg"></div>
-			<h1>Administrador</h1>
-		<ul class="mt10">
-			<li><a href="">Inicio</a></li>
-			<li><a href="">Productos</a></li>
-			<li><a href="">Salir</a></li>
-		</ul>
-		</div>
+		<?php include ("layout/_directorios.php"); ?>
 		<div class="body-page">
 			<h2>Mis productos</h2>
 			<table class="mt10">
