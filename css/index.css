@@ -1,3 +1,7 @@
+:root{
+	--main-header-color: linear-gradient(45deg,#FFFBF6,#fff);
+	--main-red:#666;
+}
 *{
 	margin: 0;
 	padding: 0;
@@ -8,6 +12,13 @@
 body{
 	width: 100%;
 	background: #eee;
+}
+header{
+	height: 80px;
+	padding: 10px;
+	width: calc(100% - 20px);
+	display: flex;
+	background: var(--main-header-color);
 }
 button{
 	padding: 10px;
@@ -24,6 +35,23 @@ button{
 	height: 100%;
 	color: #fff;
 	padding: 10px;
+}
+.body-nav-bar img{
+	width: 100%;
+	padding: 10px;
+}
+.content-page{
+	margin-top: 50px;
+}
+.logo-place{
+	width: 90px;
+	justify-content: center;
+	align-items: center;
+	margin-top: 0;
+	margin-left: 10px;
+}
+.logo-place img{
+	width: 100%;
 }
 .logo-img img{
 	padding: 20px 0;
