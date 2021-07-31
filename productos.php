@@ -1,5 +1,5 @@
 <?php
-	include('config/conexion.php');
+	include('servicios/_conexion.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,7 +44,7 @@
 		</div>
 	</div>
 	<div class="main-container">
-		<?php include ("layout/_directorios.php"); ?>
+		<?php include("layouts/_directorios.php"); ?>
 		<div class="body-page">
 			<h2>Mis productos</h2>
 			<table class="mt10">
@@ -115,5 +115,3 @@
 	</script>
 </body>
 </html>
-
-

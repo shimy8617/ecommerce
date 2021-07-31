@@ -30,3 +30,17 @@ VALUES ('#215','Remera de Morley','1050.00','1','215.jpg'),
 ('#891','Remera de Jersey','950.00','1','891.jpg'),
 ('#8131','Remera de Jersey','1100.00','1','8131.jpg'),
 ('#8183','Remera de Jersey','1050.00','1','8183.jpg');
+
+CREATE TABLE USUARIO_GESTION(
+	codusu int not null AUTO_INCREMENT,
+	nomusu varchar(50) not null,
+	apeusu varchar(50) not null,
+	emausu varchar(50) not null,
+	pasusu varchar(20) not null,
+	estado int not null,
+	CONSTRAINT pk_usuario
+	PRIMARY KEY (codusu)
+);
+
+INSERT INTO USUARIO_GESTION (nomusu,apeusu,emausu,pasusu,estado)
+VALUES ('Aypoo','Admin','aypoo10@gmail.com','4036999',1);
