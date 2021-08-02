@@ -22,12 +22,12 @@
 				$response->detail="Falta el precio";
 			}else{
 				if(isset($_FILES['imagen'])){
-					$nombre_imagen=date("YmdHis").".jpg";
+					$nombre_imagen = date("YmdHis").".jpg";
 					$sql="INSERT INTO producto (nompro,despro,prepro,estado,rutimapro)
 					VALUES ('$nombre','$descripcion',$precio,$estado,'$nombre_imagen')";
 					$result=mysqli_query($con,$sql);
 						if($result) {
-							if (move_uploaded_file($_FILES['imagen']['tmp_name'],"../../aypooecommerce/assets/products/".$nombre_imagen)) {
+							if (move_uploaded_file($_FILES['imagen']['tmp_name'],"../../catalogo-online-aypoo/assets/products/".$nombre_imagen)) {
 								$response->state=true;
 							}else{
 								$response->state=false;
