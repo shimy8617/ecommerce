@@ -47,8 +47,8 @@
 		<div class="content-page">
 			<form action="servicios/login.php" method="POST">
 				<h3>Iniciar Sesión</h3>
-				<input type="text" name="emausu" placeholder="Mail">
-				<input type="password" name="pasusu" placeholder="Contraseña">
+				<input type="text" name="emausug" placeholder="Mail">
+				<input type="password" name="pasusug" placeholder="Contraseña">
 				<?php
 					if (isset($_GET['e'])) {
 						switch ($_GET['e']) {

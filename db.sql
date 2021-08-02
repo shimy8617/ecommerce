@@ -32,15 +32,15 @@ VALUES ('#215','Remera de Morley','1050.00','1','215.jpg'),
 ('#8183','Remera de Jersey','1050.00','1','8183.jpg');
 
 CREATE TABLE USUARIO_GESTION(
-	codusu int not null AUTO_INCREMENT,
-	nomusu varchar(50) not null,
-	apeusu varchar(50) not null,
-	emausu varchar(50) not null,
-	pasusu varchar(20) not null,
-	estado int not null,
+	codusug int not null AUTO_INCREMENT,
+	nomusug varchar(50) not null,
+	apeusug varchar(50) not null,
+	emausug varchar(50) not null,
+	pasusug varchar(20) not null,
+	estadog int not null,
 	CONSTRAINT pk_usuario
-	PRIMARY KEY (codusu)
+	PRIMARY KEY (codusug)
 );
 
-INSERT INTO USUARIO_GESTION (nomusu,apeusu,emausu,pasusu,estado)
+INSERT INTO USUARIO_GESTION (nomusug,apeusug,emausug,pasusug,estadog)
 VALUES ('Aypoo','Admin','aypoo10@gmail.com','4036999',1);
