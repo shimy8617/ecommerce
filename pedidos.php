@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="main-container">
-		<?php include("layouts/_directorios.php"); ?>
+		<?php include("layout/_directorios.php"); ?>
 		<div class="body-page">
 			<h2>Inicio / Pendientes de despacho</h2>
 			<table class="mt10">
@@ -88,7 +88,7 @@
 			let fd=new FormData();
 			fd.append('codped',codped);
 			let request=new XMLHttpRequest();
-			request.open('POST','api/pedido_confirm.php',true);
+			request.open('POST','api/order_confirm.php',true);
 			request.onload=function(){
 				if (request.readyState==4 && request.status==200) {
 					let response=JSON.parse(request.responseText);

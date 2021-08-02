@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Aypoo E-commerce</title>
+	<title>Aypoo Administración</title>
 	<script src="https://kit.fontawesome.com/469e0bb689.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">

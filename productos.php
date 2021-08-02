@@ -43,8 +43,45 @@
 			<button onclick="save_product()">Guardar</button>
 		</div>
 	</div>
+
+	<div class="modal" id="modal-product-edit" style="display: none;">
+		<div class="body-modal">
+			<button class="btn-close" onclick="hide_modal('modal-product-edit')"><i class="fas fa-times"></i></button>
+			<h3>Editar producto</h3>
+			<div class="div-flex">
+				<label>Código</label>
+				<input type="text" id="codigo-e" disabled>
+			</div>
+			<div class="div-flex">
+				<label>Nombre</label>
+				<input type="text" id="nombre-e">	
+			</div>
+			<div class="div-flex">
+				<label>Descripción</label>
+				<input type="text" id="descripcion-e">	
+			</div>
+			<div class="div-flex">
+				<label>Precio</label>
+				<input type="number" id="precio-e">	
+			</div>
+			<input type="text" id="rutimapro-aux" style="display: none;">
+			<div class="div-flex">
+				<label>Estado</label>
+				<select id="estado-e">
+					<option value="1">Activo</option>
+					<option value="0">Inactivo</option>
+				</select>
+			</div>
+			<img id="rutimapro" src="" style="width: 200px; margin:	0;">
+			<div class="div-flex">
+				<input type="file" id="imagen-e">
+			</div>
+			<button onclick="update_product()">Actualizar</button>
+		</div>
+	</div>
+
 	<div class="main-container">
-		<?php include("layouts/_directorios.php"); ?>
+		<?php include("layout/_directorios.php"); ?>
 		<div class="body-page">
 			<h2>Mis productos</h2>
 			<table class="mt10">
@@ -70,8 +107,8 @@
 						<td>'.$row["prepro"].'</td>
 						<td class="td-option">
 							<div class="div-flex div-td-button">
-								<button title="Editar"><i class="fas fa-pencil-alt"></i></button>
-								<button title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+								<button onclick="edit_product('.$row["codpro"].')" title="Editar"><i class="fas fa-pencil-alt"></i></button>
+								<button onclick="delete_product('.$row["codpro"].')" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
 							</div>
 						</td>
 					</tr>';
@@ -104,7 +141,80 @@
 					let response=JSON.parse(request.responseText);
 					console.log(response);
 					if(response.state){
-						alert("correcto");
+						alert("Producto guardado");
+					window.location.reload();
+					}else{
+						alert(response.detail);
+					}
+				}
+			}
+			request.send(fd);
+		}
+
+		function delete_product(codpro){
+			var c=confirm("Estás seguro que querés eliminar el artículo "+codpro+"?");
+			if (c) {
+			let fd=new FormData();
+			fd.append('codpro',codpro);
+			let request=new XMLHttpRequest();
+			request.open('POST','api/delete_product.php',true);
+			request.onload=function(){
+				if(request.readyState==4 && request.status==200) {
+					let response=JSON.parse(request.responseText);
+					console.log(response);
+					if(response.state){
+						alert("Producto eliminado");
+						window.location.reload();
+					}else{
+						alert(response.detail);
+					}
+				}
+			}
+			request.send(fd);
+			}
+		}
+
+
+		function edit_product(codpro){
+			let fd=new FormData();
+			fd.append('codpro',codpro);
+			let request=new XMLHttpRequest();
+			request.open('POST','api/get_product.php',true);
+			request.onload=function(){
+				if(request.readyState==4 && request.status==200) {
+					let response=JSON.parse(request.responseText);
+					console.log(response);
+					document.getElementById("codigo-e").value=codpro;
+					document.getElementById("nombre-e").value=response.product.nompro;
+					document.getElementById("descripcion-e").value=response.product.despro;
+					document.getElementById("precio-e").value=response.product.prepro;
+					document.getElementById("estado-e").value=response.product.estado;
+					document.getElementById("rutimapro").src="../Catalogo-online-aypoo/assets/Products/"+response.product.rutimapro;
+					document.getElementById("rutimapro-aux").value=response.product.rutimapro;
+					show_modal('modal-product-edit');
+				}
+			}
+			request.send(fd);
+			
+		}
+		function update_product(){
+			let fd=new FormData();
+			fd.append('codigo',document.getElementById('codigo-e').value);
+			fd.append('nombre',document.getElementById('nombre-e').value);
+			fd.append('descripcion',document.getElementById('descripcion').value);
+			fd.append('precio',document.getElementById('precio-e').value);
+			fd.append('estado',document.getElementById('estado-e').value);
+			fd.append('imagen',document.getElementById('imagen-e').files[0]);
+			fd.append('rutimapro',document.getElementById('rutimapro-aux').value);
+			let request=new XMLHttpRequest();
+			request.open('POST','api/product_update.php',true);
+			request.onload=function(){
+				if(request.readyState==4 && request.status==200) {
+					let response=JSON.parse(request.responseText);
+					console.log(response);
+					if(response.state){
+						alert("Producto actualizado");
+					window.location.reload();
 					}else{
 						alert(response.detail);
 					}
