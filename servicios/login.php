@@ -3,22 +3,22 @@
 //2: Email invalido
 //3: Contraseña incorrecta
 include('_conexion.php');
-$emausu=$_POST['emausu'];
-$sql="SELECT * FROM USUARIO_GESTION WHERE emausu='$emausu'";
+$emausug=$_POST['emausug'];
+$sql="SELECT * FROM USUARIO_GESTION WHERE emausug='$emausug'";
 $result=mysqli_query($con,$sql);
 if ($result) {
 	$row=mysqli_fetch_array($result);
 	$count=mysqli_num_rows($result);
 	if ($count!=0) {
-		$pasusu=$_POST['pasusu'];
-		if ($row['pasusu']!=$pasusu) {
+		$pasusug=$_POST['pasusug'];
+		if ($row['pasusug']!=$pasusug) {
 			header('Location: ../index.php?e=3');
 		}else{
 			session_start();
-			$_SESSION['codusu']=$row['codusu'];
-			$_SESSION['emausu']=$row['emausu'];
-			$_SESSION['nomusu']=$row['nomusu'];
-			header('Location: ../main.php');
+			$_SESSION['codusug']=$row['codusug'];
+			$_SESSION['emausug']=$row['emausug'];
+			$_SESSION['nomusug']=$row['nomusug'];
+			header('Location: ../inicio.php');
 		}
 	}else{
 		header('Location: ../index.php?e=2');
